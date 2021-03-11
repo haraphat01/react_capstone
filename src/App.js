@@ -1,9 +1,10 @@
 import './App.css';
+import Body from './containers/Body';
 
 function App() {
   return (
-    <div className="App">
-      <p>Homepage</p>
+    <div>
+      <Body />
 
     </div>
   );
