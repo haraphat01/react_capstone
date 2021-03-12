@@ -1,13 +1,27 @@
+import React, { useState, useEffect } from 'react';
 import api from '../components/api';
 
-function body() {
+function Body() {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    let mounted = true;
+    api()
+      .then(items => {
+        if (mounted) {
+          setBooks(items);
+        }
+      });
+    return () => mounted = false;
+  }, []);
+
   return (
     <div className="App">
       <p>Homepage</p>
-      <p>{api().data}</p>
+      <p>{console.log(books)}</p>
 
     </div>
   );
 }
 
-export default body;
+export default Body;
